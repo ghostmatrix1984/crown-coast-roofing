@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Image-sourcing scratch scripts (not part of the shipped site):
+    ".img-work/**",
   ]),
 ]);
 
