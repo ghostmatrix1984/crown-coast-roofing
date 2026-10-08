@@ -35,7 +35,7 @@ export function Section({
     dark: "stripe-dark roof-texture",
   } as const;
   return (
-    <section id={id} className={`${tones[tone]} py-16 sm:py-20 lg:py-24 ${className}`}>
+    <section id={id} className={`${tones[tone]} py-12 sm:py-16 lg:py-20 ${className}`}>
       {children}
     </section>
   );
@@ -69,7 +69,7 @@ export function SectionHeading({
         {title}
       </h2>
       {lede ? (
-        <p className={`mt-5 text-lg leading-relaxed ${light ? "text-copper-mist" : "text-slate-mid"}`}>
+        <p className={`mt-4 text-lg leading-relaxed ${light ? "text-copper-mist" : "text-slate-mid"}`}>
           {lede}
         </p>
       ) : null}
@@ -142,20 +142,16 @@ export function CheckItem({ children }: { children: ReactNode }) {
 }
 
 /**
- * The contact email with soft break opportunities after the @ and before the
- * final domain segment, so it wraps at sensible points instead of tearing
- * mid-token in narrow columns.
+ * The contact email with a soft break opportunity after the @ so it wraps
+ * cleanly in narrow columns without tearing the domain apart.
  */
 export function EmailText() {
   const [local, domain] = site.email.split("@");
-  const lastDot = domain.lastIndexOf(".");
   return (
     <>
       {local}@
       <wbr />
-      {domain.slice(0, lastDot + 1)}
-      <wbr />
-      {domain.slice(lastDot + 1)}
+      {domain}
     </>
   );
 }

@@ -108,10 +108,10 @@ export default function AboutPage() {
             title="What you get on every job"
             lede="Not a slogan — just the things customers tell us matter when someone is working on the roof over their heads."
           />
-          <div className="mt-12">
+          <div className="mt-9">
             <WhyUsList />
           </div>
-          <div className="mt-10 max-w-3xl">
+          <div className="mt-8 max-w-3xl">
             <DemoNote>
               About-page copy describes a fictional demonstration company. Biographies, accreditations
               and business history have deliberately not been invented for this demo.
@@ -127,7 +127,7 @@ export default function AboutPage() {
             title="One corner of Kent, known properly"
             lede="Knowing the local housing stock matters: which estates use a tile that is no longer made, which seafront streets take the brunt of south-easterlies, which older cottages hide a slate roof behind a parapet."
           />
-          <ul className="mt-12 grid gap-px border border-line-strong bg-line-strong sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="mt-9 grid gap-px border border-line-strong bg-line-strong sm:grid-cols-2 lg:grid-cols-4">
             {mainTowns.map((town) => (
               <li key={town.slug} className="bg-canvas px-6 py-7">
                 <h3 className="font-display text-xl">{town.name}</h3>
@@ -151,7 +151,7 @@ export default function AboutPage() {
             title="From first call to final check"
             lede="The same careful rhythm on a single repair as on a full re-roof: inspect, written quote, schedule, complete."
           />
-          <div className="mt-12">
+          <div className="mt-9">
             <ProcessSteps />
           </div>
           <p className="mt-8 max-w-3xl text-[0.95rem] leading-relaxed text-slate-mid">

@@ -2,12 +2,25 @@ import Image from "next/image";
 import Link from "next/link";
 import { processSteps, services, whyUs, type Service } from "@/lib/content";
 import { serviceIcons } from "./icons";
-import { Container, Section, SectionHeading, ButtonLink, CheckItem } from "./ui";
+import { Container, Section, SectionHeading, ButtonLink } from "./ui";
 import { site } from "@/lib/site";
 import { IconPhone } from "./icons";
 
-/** Services overview as a ruled editorial list — not a grid of rounded cards. */
-export function ServiceList({ items = services }: { items?: readonly Service[] }) {
+const serviceHref = (service: Service) => `/services/${service.slug}`;
+
+function ServiceArrow() {
+  return (
+    <span
+      aria-hidden="true"
+      className="inline-flex items-center gap-2 whitespace-nowrap font-semibold tracking-tight text-copper-deep transition-transform group-hover:translate-x-1"
+    >
+      Details →
+    </span>
+  );
+}
+
+/** Home: three leading services as alternating image/text bands. */
+export function ServiceFeatured({ items }: { items: readonly Service[] }) {
   return (
     <div className="border-t border-line-strong">
       {items.map((service, index) => {
@@ -15,31 +28,119 @@ export function ServiceList({ items = services }: { items?: readonly Service[] }
         return (
           <article key={service.slug} className="group border-b border-line-strong">
             <Link
-              href={`/services/${service.slug}`}
-              className="grid gap-5 py-8 transition-colors hover:bg-paper sm:grid-cols-[auto_1fr_auto] sm:items-start sm:gap-8"
+              href={serviceHref(service)}
+              className="grid items-center gap-8 py-9 transition-colors hover:bg-paper lg:grid-cols-2 lg:gap-14"
             >
-              <span className="flex items-center gap-4 sm:block">
-                <span className="block text-[0.72rem] font-bold uppercase tracking-[0.18em] text-slate-mid">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <Icon className="mt-0 h-8 w-8 text-copper sm:mt-4" />
-              </span>
-              <span className="block">
-                <h3 className="font-display text-2xl leading-snug sm:text-[1.75rem]">
+              <div className={index % 2 === 1 ? "lg:order-2" : ""}>
+                <p className="kicker">
+                  {String(index + 1).padStart(2, "0")} · {service.shortName}
+                </p>
+                <h3 className="mt-4 font-display text-[1.9rem] leading-tight sm:text-[2.35rem]">
                   {service.name}
                 </h3>
-                <p className="mt-2 max-w-2xl leading-relaxed text-slate-mid">{service.summary}</p>
-              </span>
-              <span className="inline-flex items-center gap-2 self-center whitespace-nowrap font-semibold tracking-tight text-copper-deep">
-                Details
-                <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">
-                  →
+                <p className="mt-3 max-w-xl text-[1.05rem] leading-relaxed text-slate-mid">
+                  {service.summary}
+                </p>
+                <span className="mt-5 inline-flex items-center gap-2 font-semibold tracking-tight text-copper-deep">
+                  Details
+                  <span
+                    aria-hidden="true"
+                    className="transition-transform group-hover:translate-x-1"
+                  >
+                    →
+                  </span>
                 </span>
-              </span>
+              </div>
+              <figure
+                className={`relative m-0 aspect-[3/2] w-full overflow-hidden border border-line bg-[#e4dccf] ${
+                  index % 2 === 1 ? "lg:order-1" : ""
+                }`}
+              >
+                <Image
+                  src={service.image}
+                  alt={service.imageAlt}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 44vw"
+                  className="object-cover"
+                  style={service.imagePosition ? { objectPosition: service.imagePosition } : undefined}
+                />
+                <Icon className="absolute bottom-3 left-3 h-7 w-7 bg-canvas/90 p-1 text-copper" />
+              </figure>
             </Link>
           </article>
         );
       })}
+    </div>
+  );
+}
+
+/** Home: the remaining services as a tight ruled index. */
+export function ServiceCompact({ items }: { items: readonly Service[] }) {
+  return (
+    <ul className="grid gap-px border border-line-strong bg-line-strong sm:grid-cols-2">
+      {items.map((service) => {
+        const Icon = serviceIcons[service.icon];
+        return (
+          <li key={service.slug} className="bg-canvas">
+            <Link
+              href={serviceHref(service)}
+              className="group flex h-full flex-col gap-3 px-6 py-6 transition-colors hover:bg-paper sm:flex-row sm:items-start sm:gap-4"
+            >
+              <span className="flex items-start gap-4">
+                <Icon className="mt-1 h-6 w-6 shrink-0 text-copper" />
+                <span className="block">
+                  <span className="block font-display text-xl leading-snug">{service.name}</span>
+                  <span className="mt-1 block text-[0.98rem] leading-relaxed text-slate-mid">
+                    {service.summary}
+                  </span>
+                </span>
+              </span>
+              <span className="ml-auto self-center sm:shrink-0">
+                <ServiceArrow />
+              </span>
+            </Link>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
+/** Services page: every service as a ruled row with a photographic thumbnail. */
+export function ServiceList({ items = services }: { items?: readonly Service[] }) {
+  return (
+    <div className="border-t border-line-strong">
+      {items.map((service, index) => (
+        <article key={service.slug} className="group border-b border-line-strong">
+          <Link
+            href={serviceHref(service)}
+            className="grid items-center gap-6 py-7 transition-colors hover:bg-paper sm:grid-cols-[auto_1fr_auto] sm:gap-8"
+          >
+            <div className="flex items-center gap-5">
+              <span className="block w-6 text-[0.72rem] font-bold uppercase tracking-[0.18em] text-slate-mid">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <span className="relative block h-24 w-36 shrink-0 overflow-hidden border border-line bg-[#e4dccf]">
+                <Image
+                  src={service.image}
+                  alt=""
+                  fill
+                  sizes="(max-width: 640px) 144px, 144px"
+                  className="object-cover"
+                  style={service.imagePosition ? { objectPosition: service.imagePosition } : undefined}
+                />
+              </span>
+            </div>
+            <div>
+              <h3 className="font-display text-2xl leading-snug sm:text-[1.7rem]">{service.name}</h3>
+              <p className="mt-1.5 max-w-2xl text-[1.02rem] leading-relaxed text-slate-mid">
+                {service.summary}
+              </p>
+            </div>
+            <ServiceArrow />
+          </Link>
+        </article>
+      ))}
     </div>
   );
 }
@@ -103,15 +204,29 @@ export function ProcessSteps({ variant = "home" }: { variant?: "home" | "service
   );
 }
 
-/** Why choose Crown & Coast. */
+/** Why choose Crown & Coast — scannable, one line per benefit. */
 export function WhyUsList() {
   return (
-    <ul className="grid gap-x-12 gap-y-9 sm:grid-cols-2">
+    <ul className="grid gap-x-10 gap-y-6 sm:grid-cols-2">
       {whyUs.map((point) => (
-        <CheckItem key={point.title}>
-          <span className="font-semibold text-ink">{point.title}</span>
-          <span className="mt-1 block text-slate-mid">{point.body}</span>
-        </CheckItem>
+        <li key={point.title} className="border-t border-line pt-5">
+          <h3 className="flex items-center gap-2.5 font-display text-xl leading-snug">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2.2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+              className="h-4 w-4 shrink-0 text-copper"
+            >
+              <path d="m4.5 12.5 5 5 10-11" />
+            </svg>
+            {point.title}
+          </h3>
+          <p className="mt-2 pl-[1.65rem] text-[1rem] leading-relaxed text-slate-mid">{point.body}</p>
+        </li>
       ))}
     </ul>
   );

@@ -2,11 +2,12 @@ import Image from "next/image";
 import type { Project } from "@/lib/content";
 
 /**
- * Case-study imagery as a labelled side-by-side pair.
+ * Case-study imagery as a labelled before/after pair.
  *
  * The two photographs are labelled factually — what each picture actually
- * shows — rather than implying a single-property before/after transformation,
- * because these demonstration pairings may show different properties.
+ * shows — rather than implying a single-property transformation, because these
+ * demonstration pairings may show different properties. Panels stack on small
+ * screens so each photograph stays large enough to read.
  */
 export function ProjectPair({ project }: { project: Project }) {
   const panels = [
@@ -26,19 +27,20 @@ export function ProjectPair({ project }: { project: Project }) {
 
   return (
     <figure className="m-0">
-      <div className="grid grid-cols-2 gap-px border border-line bg-line-strong">
+      <div className="grid gap-px border border-line bg-line-strong sm:grid-cols-2">
         {panels.map((panel) => (
-          <div key={panel.src} className="relative aspect-[4/3] w-full overflow-hidden bg-slate-deep">
+          <div key={panel.src} className="relative aspect-[3/2] w-full overflow-hidden bg-[#e4dccf]">
             <Image
               src={panel.src}
               alt={panel.alt}
               fill
-              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 560px"
+              loading="eager"
+              sizes="(max-width: 640px) 100vw, 50vw"
               className="object-cover"
             />
             <span
-              className={`absolute bottom-0 left-0 px-2.5 py-1 text-[0.68rem] font-bold uppercase tracking-[0.12em] ${
-                panel.tone === "copper" ? "bg-copper/95 text-white" : "bg-ink/85 text-paper"
+              className={`absolute left-0 top-0 px-3 py-1.5 text-[0.72rem] font-bold uppercase tracking-[0.14em] ${
+                panel.tone === "copper" ? "bg-copper text-white" : "bg-ink text-paper"
               }`}
             >
               {panel.label}
@@ -46,7 +48,7 @@ export function ProjectPair({ project }: { project: Project }) {
           </div>
         ))}
       </div>
-      <figcaption className="mt-3 text-[0.85rem] leading-relaxed text-slate-mid">
+      <figcaption className="mt-3 text-[0.88rem] leading-relaxed text-slate-mid">
         {project.pairNote}
       </figcaption>
     </figure>

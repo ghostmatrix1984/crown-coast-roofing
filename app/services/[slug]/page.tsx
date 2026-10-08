@@ -59,7 +59,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
                 ))}
               </div>
 
-              <h2 className="mt-12 font-display text-2xl sm:text-3xl">What is included</h2>
+              <h2 className="mt-9 font-display text-2xl sm:text-3xl">What is included</h2>
               <ul className="mt-6 grid gap-3">
                 {service.includes.map((item) => (
                   <CheckItem key={item}>{item}</CheckItem>
@@ -101,7 +101,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
             title={`How ${service.shortName.toLowerCase()} jobs run`}
             lede="The same four steps on every job, from a single repair to a full re-roof."
           />
-          <div className="mt-12">
+          <div className="mt-9">
             <ProcessSteps variant="service" />
           </div>
         </Container>
@@ -113,7 +113,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
             kicker="Common questions"
             title={`${service.shortName} — questions we get asked`}
           />
-          <div className="mt-10">
+          <div className="mt-8">
             <FaqList faqs={service.faqs} />
           </div>
         </Container>
@@ -122,7 +122,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
       <Section tone="paper">
         <Container>
           <SectionHeading kicker="Related services" title="Often booked alongside" />
-          <ul className="mt-10 grid gap-px border border-line-strong bg-line-strong sm:grid-cols-3">
+          <ul className="mt-8 grid gap-px border border-line-strong bg-line-strong sm:grid-cols-3">
             {related.map((item) => (
               <li key={item.slug} className="bg-canvas">
                 <Link

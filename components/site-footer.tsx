@@ -84,7 +84,7 @@ export function SiteFooter() {
                   className="inline-flex items-center gap-2 text-paper/80 transition-colors hover:text-copper-mist"
                 >
                   <IconMail className="h-4 w-4 shrink-0 text-copper-mist" />
-                  <span className="text-[0.9rem]">
+                  <span className="text-[0.85rem]">
                     <EmailText />
                   </span>
                 </a>

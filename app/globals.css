@@ -168,6 +168,25 @@ h3 {
   background-size: 28px 28px;
 }
 
+/*
+ * Hero text panel at desktop and very wide viewports: the panel itself bleeds
+ * to the edge (pattern included), while its content aligns to the shared page
+ * container so the hero and the sections below sit on one anchor line.
+ */
+@media (min-width: 1024px) {
+  .hero-panel {
+    padding-left: max(3rem, calc((100vw - 80rem) / 2 + 2rem));
+    padding-right: 3rem;
+  }
+}
+
+@media (min-width: 2560px) {
+  .hero-panel {
+    padding-left: max(3rem, calc((100vw - 110rem) / 2 + 2rem));
+    padding-right: 5rem;
+  }
+}
+
 /* ----------------------------- forms ------------------------------ */
 
 .field {

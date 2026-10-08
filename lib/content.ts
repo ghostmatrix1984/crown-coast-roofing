@@ -28,7 +28,7 @@ export const services: Service[] = [
     name: "Roof repairs & leak detection",
     shortName: "Roof repairs & leaks",
     summary:
-      "Tracked-down leaks, slipped and missing tiles, repointed ridges and failed flashings — repaired properly, with photographs of what we found.",
+      "Leaks traced to their cause, slipped tiles and failed flashings fixed — with photographs of what we found.",
     icon: "repair",
     image: "/images/service-repairs.jpg",
     imageAlt: "Roof stripped back for repair on a stone cottage, with new timbers and underlay exposed",
@@ -71,7 +71,7 @@ export const services: Service[] = [
     name: "New roofs & complete roof replacement",
     shortName: "New roofs & re-roofs",
     summary:
-      "Complete re-roofs in natural slate or concrete and clay tiles — stripped, ventilated, insulated and detailed to current standards, with scaffolding and waste handled for you.",
+      "Complete re-roofs in slate or tile: stripped, ventilated, insulated and detailed to current standards.",
     icon: "newroof",
     image: "/images/service-new-roof.jpg",
     imageAlt: "Roofer fixing a new clay pantile onto the battens of a new roof",
@@ -114,7 +114,7 @@ export const services: Service[] = [
     name: "Pitched, tiled & slate roofing",
     shortName: "Pitched, tiled & slate",
     summary:
-      "Traditional and modern pitched roofing — Kentish peg tiles, plain tiles and natural slate — laid, matched and repaired with the right fixings for the pitch.",
+      "Kentish peg tiles, plain tiles and natural slate — laid, matched and fixed for the pitch and exposure.",
     icon: "slate",
     image: "/images/service-slate.jpg",
     imageAlt: "Detail of a natural slate roof with a slate-hung gable and dressed ridge",
@@ -153,7 +153,7 @@ export const services: Service[] = [
     name: "Flat roofing",
     shortName: "Flat roofing",
     summary:
-      "Single-ply (EPDM), GRP fibreglass and high-performance felt systems for garages, bay roofs, extensions and dormers — properly insulated, ventilated and drained.",
+      "EPDM, GRP and high-performance felt for garages, bays and extensions — drained, trimmed and insulated properly.",
     icon: "flat",
     image: "/images/service-flat-roof.jpg",
     imageAlt: "Finished membrane flat roof with parapet coping and clean edge detail, seen from above",
@@ -197,7 +197,7 @@ export const services: Service[] = [
     name: "Chimney repairs & leadwork",
     shortName: "Chimneys & leadwork",
     summary:
-      "Stacks, flaunchings, pots and the lead that keeps them watertight — repointing, rebuilding and lead flashing renewed to a detail that lasts.",
+      "Stacks, flaunchings and pots repointed and rebuilt, with new lead dressed to keep the joint watertight.",
     icon: "chimney",
     image: "/images/service-chimney.jpg",
     imageAlt: "Brick chimney stack with new stepped lead flashings dressed into the tile courses",
@@ -236,7 +236,7 @@ export const services: Service[] = [
     name: "Fascias, soffits & guttering",
     shortName: "Fascias, soffits & gutters",
     summary:
-      "The roofline that keeps water moving: timber repairs and full uPVC roofline replacement, plus gutters realigned, cleared and renewed.",
+      "Timber repairs and full roofline replacement, plus gutters cleared, re-aligned and renewed.",
     icon: "gutter",
     image: "/images/service-gutters.jpg",
     imageAlt: "Lead valley and parapet gutter with a cast-iron downpipe on a slate roof",
@@ -275,7 +275,7 @@ export const services: Service[] = [
     name: "Storm & emergency roof repairs",
     shortName: "Storm & emergency",
     summary:
-      "After a storm: we make the roof safe and watertight first, then price the permanent repair in daylight — across Folkestone, Hythe, Dover and Deal.",
+      "After a gale we make the roof safe first, then price the permanent repair in daylight.",
     icon: "storm",
     image: "/images/service-storm.jpg",
     imageAlt: "Broken, moss-covered tiles stripped from a roof during repair work",
@@ -363,10 +363,10 @@ export const projects: Project[] = [
       "Roofers stripping and re-tiling the slope of an interwar semi, with scaffold in place",
     beforeLabel: "Stripping & re-tiling",
     afterImage: "/images/project-reroof-after.jpg",
-    afterAlt: "Completed re-tiling on interwar semis, with the scaffold struck",
+    afterAlt: "A finished plain-tile roof with clean lines and rooflights after re-tiling",
     afterLabel: "Tiling completed",
     pairNote:
-      "Demonstration pair from one re-roof programme photographed mid-work and on completion. Illustrative imagery, not a documented Crown & Coast project.",
+      "Demonstration pairing showing a re-roof mid-work and completed tiling. Illustrative imagery, not a documented Crown & Coast project.",
   },
   {
     slug: "failed-pantiles-replaced",
@@ -469,27 +469,27 @@ export const processSteps = [
 export const whyUs = [
   {
     title: "One roofer, start to finish",
-    body: "The person who inspects your roof is the person who quotes it and the person who works on it. Nothing is handed to a subcontractor you have never met.",
+    body: "The person who inspects your roof quotes it and works on it — no subcontractors you have never met.",
   },
   {
-    title: "Repair before replace, honestly",
-    body: "A repair that lasts is the right answer when the roof has life in it. We will say so — and we will say so when it does not, with the evidence in photographs.",
+    title: "Repair before replace",
+    body: "If a repair will hold, we say so. If it will not, we show you why before you commit to anything.",
   },
   {
     title: "Itemised written quotes",
-    body: "Every quote sets out the work and the materials line by line, so you can compare it properly against anyone else's. Fixed price once agreed.",
+    body: "Work and materials line by line, fixed price once agreed — easy to compare against anyone else.",
   },
   {
     title: "Photographs of the work",
-    body: "Before, during and after. Useful for your own records, and exactly what an insurer asks for when a claim is involved.",
+    body: "Before, during and after — for your records, and exactly what an insurer asks for on a claim.",
   },
   {
     title: "Care around your home",
-    body: "Scaffold boarded where it passes windows, lofts sheeted, and a clean-down and skip sweep at the end. Neighbours kept informed where access is shared.",
+    body: "Scaffold boarded at windows, lofts sheeted, everything cleaned down and cleared at the end.",
   },
   {
     title: "Local and accountable",
-    body: "We work in a handful of towns, not a whole country. Our reputation is built street by street across East Kent, and we answer the phone ourselves.",
+    body: "A short round of East Kent towns — we answer the phone ourselves, and we are still here next winter.",
   },
 ] as const;
 

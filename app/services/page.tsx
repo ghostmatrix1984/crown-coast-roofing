@@ -54,10 +54,10 @@ export default function ServicesPage() {
             title="Our roofing services in detail"
             lede="Each service page explains what the work involves, what it costs in terms of time and disruption, and the warning signs to look for at home."
           />
-          <div className="mt-12">
+          <div className="mt-9">
             <ServiceList items={services} />
           </div>
-          <div className="mt-10 max-w-3xl">
+          <div className="mt-8 max-w-3xl">
             <DemoNote>
               Demonstration content: service descriptions are realistic trade copy written for this
               fictional company, and do not represent a real business or its accreditations.

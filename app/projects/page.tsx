@@ -57,12 +57,8 @@ export default function ProjectsPage() {
       {projects.map((project, index) => (
         <Section key={project.slug} tone={index % 2 === 0 ? "canvas" : "paper"}>
           <Container>
-            <div
-              className={`grid items-start gap-12 lg:grid-cols-2 ${
-                index % 2 === 1 ? "lg:[&>figure]:order-2" : ""
-              }`}
-            >
-              <ProjectPair project={project} />
+            <ProjectPair project={project} />
+            <div className="mt-6 grid gap-8 lg:grid-cols-2 lg:gap-14">
               <div>
                 <p className="kicker">
                   {project.location} · {project.service}
@@ -70,13 +66,13 @@ export default function ProjectsPage() {
                 <h2 className="mt-4 font-display text-3xl leading-tight sm:text-4xl">
                   {project.title}
                 </h2>
-                <p className="mt-5 text-[1.05rem] leading-relaxed text-ink-soft">{project.summary}</p>
-                <ul className="mt-7 grid gap-3">
-                  {project.details.map((detail) => (
-                    <CheckItem key={detail}>{detail}</CheckItem>
-                  ))}
-                </ul>
+                <p className="mt-4 text-[1.05rem] leading-relaxed text-ink-soft">{project.summary}</p>
               </div>
+              <ul className="grid content-start gap-3 border-t border-line-strong pt-6 lg:border-l lg:border-t-0 lg:pl-14 lg:pt-0">
+                {project.details.map((detail) => (
+                  <CheckItem key={detail}>{detail}</CheckItem>
+                ))}
+              </ul>
             </div>
           </Container>
         </Section>

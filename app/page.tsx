@@ -2,17 +2,22 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { site, mainTowns, surroundingAreas } from "@/lib/site";
-import { homeFaqs, projects, testimonials } from "@/lib/content";
+import { homeFaqs, projects, services, testimonials } from "@/lib/content";
 import { buildMetadata } from "@/lib/seo";
 import { buildBreadcrumbJsonLd, buildFaqPageJsonLd } from "@/lib/structured-data";
 import { JsonLd } from "@/components/json-ld";
 import { ProjectPair } from "@/components/project-pair";
 import { FaqList } from "@/components/faq";
 import { QuoteForm } from "@/components/quote-form";
-import { CtaBand, ProcessSteps, ServiceList, WhyUsList } from "@/components/sections";
+import {
+  CtaBand,
+  ProcessSteps,
+  ServiceCompact,
+  ServiceFeatured,
+  WhyUsList,
+} from "@/components/sections";
 import {
   ButtonLink,
-  CheckItem,
   Container,
   DemoNote,
   EmailText,
@@ -22,8 +27,6 @@ import {
 } from "@/components/ui";
 import {
   IconArrowRight,
-  IconCamera,
-  IconClock,
   IconMail,
   IconPhone,
   IconPin,
@@ -37,31 +40,37 @@ export const metadata: Metadata = buildMetadata({
   path: "/",
 });
 
+/** Legitimate, verifiable-by-experience signals — no invented accreditations. */
 const trustItems = [
   {
     icon: IconShield,
-    title: "Guarantee terms in writing",
-    body: "What is covered, and for how long, set out with your quote.",
+    label: "In writing",
+    title: "Free itemised quotes",
+    body: "Work, materials and price set out line by line before anything starts.",
   },
   {
-    icon: IconCamera,
-    title: "Photographed work",
-    body: "Before, during and after — useful for records and insurance.",
-  },
-  {
-    icon: IconClock,
-    title: "Storm call-outs",
-    body: "Water coming in? We make the roof safe first, then price the repair.",
+    icon: IconPhone,
+    label: "One point of contact",
+    title: "Clear communication",
+    body: "The roofer who inspects your roof quotes it — and answers the phone.",
   },
   {
     icon: IconPin,
-    title: "Local to East Kent",
+    label: "CT13 – CT21",
+    title: "Local coverage",
     body: "Folkestone, Hythe, Dover, Deal and the surrounding villages.",
+  },
+  {
+    icon: IconStorm,
+    label: "Same-day make-safe",
+    title: "Emergency response",
+    body: "Water coming in? Roof made safe first, repair priced after.",
   },
 ] as const;
 
 export default function HomePage() {
   const featured = projects.slice(0, 2);
+  const [leadTestimonial, ...moreTestimonials] = testimonials;
 
   return (
     <>
@@ -70,18 +79,19 @@ export default function HomePage() {
 
       {/* ---------------------------- hero ---------------------------- */}
       <section className="border-b border-line bg-ink text-paper">
-        <div className="grid w-full lg:grid-cols-[1.05fr_1fr] min-[2560px]:mx-auto min-[2560px]:max-w-[110rem]">
-          <div className="roof-texture flex flex-col justify-center px-5 py-16 sm:px-8 lg:py-28 lg:px-12 2xl:px-20">
+        <div className="grid w-full lg:grid-cols-[1.05fr_1fr]">
+          <div className="roof-texture hero-panel flex flex-col justify-center px-5 py-14 sm:px-8 lg:px-12 lg:py-24">
+            <div className="min-[2560px]:max-w-[46rem]">
             <p className="kicker kicker-light">Folkestone · Hythe · Dover · Deal</p>
-            <h1 className="mt-6 max-w-2xl font-display text-[2.6rem] leading-[1.03] tracking-tight sm:text-6xl lg:text-[4.25rem]">
+            <h1 className="mt-5 max-w-2xl font-display text-[2.6rem] leading-[1.03] tracking-tight sm:text-6xl lg:text-[4.25rem]">
               Roofs built, repaired and kept right across East Kent
             </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-copper-mist">
-              Independent roofers working on homes and rentals from Folkestone to Deal. Leaks traced
-              and fixed, new roofs in slate and tile, flat roofing, chimney leadwork and storm
-              call-outs — with free written quotes and no sales patter.
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-copper-mist">
+              Independent roofers on homes and rentals from Folkestone to Deal — leaks traced and
+              fixed, new roofs in slate and tile, flat roofing, leadwork and storm call-outs. Free
+              written quotes, no sales patter.
             </p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href="/contact#quote" className="min-h-14 text-lg">
                 Get a free quote
               </ButtonLink>
@@ -90,22 +100,23 @@ export default function HomePage() {
                 {site.phoneDisplay}
               </ButtonLink>
             </div>
-            <ul className="mt-10 grid gap-3 border-t border-white/15 pt-7 text-[0.95rem] sm:grid-cols-3">
+            <ul className="mt-9 grid gap-3 border-t border-white/15 pt-6 text-[0.95rem] sm:grid-cols-3">
               <li className="flex items-center gap-2.5 text-paper/85">
                 <IconShield className="h-5 w-5 shrink-0 text-copper-mist" /> Free written quotes
               </li>
               <li className="flex items-center gap-2.5 text-paper/85">
-                <IconCamera className="h-5 w-5 shrink-0 text-copper-mist" /> Photos of the work
+                <IconPin className="h-5 w-5 shrink-0 text-copper-mist" /> Photos of the work
               </li>
               <li className="flex items-center gap-2.5 text-paper/85">
                 <IconStorm className="h-5 w-5 shrink-0 text-copper-mist" /> Storm emergencies
               </li>
             </ul>
+            </div>
           </div>
-          <div className="relative min-h-[320px] lg:min-h-[640px]">
+          <div className="relative min-h-[300px] lg:min-h-[620px]">
             <Image
-              src="/images/hero-roofscape.jpg"
-              alt="Chimneys and tiled roofs on the Kent coast at Broadstairs — the kind of roof Crown & Coast Roofing works on"
+              src="/images/hero-roofing-work.jpg"
+              alt="A roof half-stripped back to the battens beneath scaffolding during a re-roof"
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 45vw"
@@ -117,40 +128,50 @@ export default function HomePage() {
       <TileCourse flip />
 
       {/* --------------------------- trust ---------------------------- */}
-      <Section tone="paper" className="!py-12">
+      <section className="bg-paper">
         <Container>
-          <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {trustItems.map((item) => (
-              <li key={item.title} className="flex gap-4">
-                <item.icon className="h-7 w-7 shrink-0 text-copper" />
-                <div>
-                  <h2 className="font-display text-lg leading-snug">{item.title}</h2>
-                  <p className="mt-1 text-[0.95rem] leading-relaxed text-slate-mid">{item.body}</p>
-                </div>
+          <ul className="grid border-b border-line-strong sm:grid-cols-2 sm:divide-x sm:divide-line lg:grid-cols-4">
+            {trustItems.map((item, index) => (
+              <li
+                key={item.title}
+                className={`border-t border-line-strong py-7 sm:border-t-0 sm:py-8 ${
+                  index === 0 ? "sm:pr-6" : "sm:px-6"
+                } ${index === trustItems.length - 1 ? "sm:pr-0" : ""}`}
+              >
+                <item.icon className="h-6 w-6 text-copper" />
+                <p className="mt-4 text-[0.7rem] font-bold uppercase tracking-[0.16em] text-copper-deep">
+                  {item.label}
+                </p>
+                <h2 className="mt-1.5 font-display text-xl leading-snug">{item.title}</h2>
+                <p className="mt-2 text-[0.95rem] leading-relaxed text-slate-mid">{item.body}</p>
               </li>
             ))}
           </ul>
-          <div className="mt-8">
+          <div className="py-6">
             <DemoNote>
               Demonstration site: guarantee wording, projects and testimonials shown here are
               fictional demo content, not real customer reviews or accreditations.
             </DemoNote>
           </div>
         </Container>
-      </Section>
+      </section>
 
       {/* -------------------------- services -------------------------- */}
       <Section id="services">
         <Container>
           <SectionHeading
             kicker="What we do"
-            title="Roofing services for every kind of East Kent roof"
-            lede="From a single slipped tile to a complete re-roof, the work is specified for your building — Kentish peg tiles, plain tiles, natural slate, flat roof systems and traditional leadwork all included."
+            title="Roofing for every kind of East Kent roof"
+            lede="From a single slipped tile to a complete re-roof — Kentish peg tiles, plain tiles, natural slate, flat roof systems and traditional leadwork."
           />
-          <div className="mt-12">
-            <ServiceList />
+          <div className="mt-9">
+            <ServiceFeatured items={services.slice(0, 3)} />
           </div>
-          <div className="mt-10">
+          <h3 className="mt-10 font-display text-xl">More services</h3>
+          <div className="mt-4">
+            <ServiceCompact items={services.slice(3)} />
+          </div>
+          <div className="mt-8">
             <Link
               href="/services"
               className="link-underline inline-flex min-h-11 items-center gap-2 font-semibold tracking-tight text-copper-deep"
@@ -167,28 +188,33 @@ export default function HomePage() {
           <SectionHeading
             kicker="Recent work"
             title="Before and after, from around the district"
-            lede="A look at the kind of jobs we take on — a semi re-roofed in stages, failed tiles replaced and chimney leadwork renewed. Two photographs on each job, labelled for what they show."
+            lede="Two photographs on every job — where the work started, and where it finished."
           />
-          <div className="mt-12 grid gap-12 lg:grid-cols-2">
+          <div className="mt-9 space-y-14">
             {featured.map((project) => (
               <article key={project.slug}>
                 <ProjectPair project={project} />
-                <h3 className="mt-5 font-display text-2xl leading-snug">{project.title}</h3>
-                <p className="mt-1 text-[0.9rem] font-semibold uppercase tracking-[0.12em] text-copper-deep">
-                  {project.location} · {project.service}
-                </p>
-                <p className="mt-3 leading-relaxed text-slate-mid">{project.summary}</p>
+                <div className="mt-5 grid gap-4 lg:grid-cols-2 lg:gap-14">
+                  <div>
+                    <p className="kicker">
+                      {project.location} · {project.service}
+                    </p>
+                    <h3 className="mt-4 font-display text-2xl leading-snug sm:text-3xl">
+                      {project.title}
+                    </h3>
+                  </div>
+                  <p className="text-[1.02rem] leading-relaxed text-slate-mid">{project.summary}</p>
+                </div>
               </article>
             ))}
           </div>
           <div className="mt-8">
             <DemoNote>
-              These case studies are illustrative demonstration pairings using licensed stock
-              photography — they are not genuine Crown &amp; Coast projects, and the paired images may
-              show different properties.
+              Illustrative demonstration pairings using licensed stock photography — not genuine
+              Crown &amp; Coast projects, and the paired images may show different properties.
             </DemoNote>
           </div>
-          <div className="mt-8">
+          <div className="mt-6">
             <Link
               href="/projects"
               className="link-underline inline-flex min-h-11 items-center gap-2 font-semibold tracking-tight text-copper-deep"
@@ -202,12 +228,12 @@ export default function HomePage() {
       {/* --------------------------- why us --------------------------- */}
       <Section>
         <Container>
-          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
-            <SectionHeading
-              kicker="Why Crown & Coast"
-              title="A roofer you can actually get hold of"
-              lede="Small, local and careful. We would rather repair your roof properly than sell you a new one you do not need — and we show you the evidence either way."
-            />
+          <SectionHeading
+            kicker="Why Crown & Coast"
+            title="A roofer you can actually get hold of"
+            lede="Small, local and careful — we would rather repair your roof than sell you a new one you do not need."
+          />
+          <div className="mt-8">
             <WhyUsList />
           </div>
         </Container>
@@ -219,9 +245,9 @@ export default function HomePage() {
           <SectionHeading
             kicker="How it works"
             title="Inspect → written quote → schedule → complete"
-            lede="Four steps, no surprises. You will know what is happening on your roof before it happens."
+            lede="Four steps, no surprises — you will know what is happening on your roof before it happens."
           />
-          <div className="mt-12">
+          <div className="mt-9">
             <ProcessSteps />
           </div>
         </Container>
@@ -231,26 +257,31 @@ export default function HomePage() {
       <Section>
         <Container>
           <SectionHeading kicker="Testimonials" title="What customers say" />
-          <div className="mt-6">
+          <div className="mt-5">
             <DemoNote>
               Demo testimonials — fictional content written for this demonstration website. They are
               not real reviews and do not reflect genuine customers.
             </DemoNote>
           </div>
-          <ul className="mt-10 grid gap-px border border-line-strong bg-line-strong lg:grid-cols-3">
-            {testimonials.map((testimonial) => (
-              <li key={testimonial.name} className="flex flex-col justify-between bg-canvas px-7 py-9">
-                <blockquote className="text-[1.05rem] leading-relaxed">
-                  <span aria-hidden="true" className="font-display text-3xl leading-none text-copper">
-                    “
-                  </span>
-                  {testimonial.quote}
-                </blockquote>
-                <p className="mt-6 border-t border-line pt-4 text-[0.9rem] font-semibold tracking-tight">
-                  {testimonial.name}
-                  <span className="mt-0.5 block font-normal text-slate-mid">
-                    {testimonial.area} (demo)
-                  </span>
+          <figure className="mt-10 border-t-2 border-copper pt-8">
+            <blockquote className="max-w-4xl font-display text-[1.45rem] leading-[1.4] sm:text-[1.75rem] sm:leading-[1.35]">
+              <span aria-hidden="true" className="mr-1 text-copper">
+                “
+              </span>
+              {leadTestimonial.quote}
+            </blockquote>
+            <figcaption className="mt-6 text-[0.95rem]">
+              <span className="font-semibold tracking-tight">{leadTestimonial.name}</span>
+              <span className="text-slate-mid"> · {leadTestimonial.area} (demo)</span>
+            </figcaption>
+          </figure>
+          <ul className="mt-12 grid gap-10 border-t border-line-strong pt-8 sm:grid-cols-2 sm:gap-14">
+            {moreTestimonials.map((testimonial) => (
+              <li key={testimonial.name}>
+                <blockquote className="text-[1.05rem] leading-relaxed">{testimonial.quote}</blockquote>
+                <p className="mt-4 text-[0.9rem]">
+                  <span className="font-semibold tracking-tight">{testimonial.name}</span>
+                  <span className="text-slate-mid"> · {testimonial.area} (demo)</span>
                 </p>
               </li>
             ))}
@@ -259,31 +290,28 @@ export default function HomePage() {
       </Section>
 
       {/* --------------------------- areas ---------------------------- */}
-      <Section tone="dark" id="areas">
+      <Section tone="paper" id="areas">
         <Container>
-          <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
             <SectionHeading
               kicker="Areas covered"
               title="Roofing across Folkestone, Hythe, Dover and Deal"
-              lede="Working across the CT13–CT21 postcode districts and the villages in between. If you are on the edge of the patch, ask — we will tell you honestly whether we can get to you."
-              light
+              lede="CT13–CT21 and the villages in between. On the edge of the patch? Ask — we will tell you honestly whether we can get to you."
             />
             <div>
-              <ul className="grid gap-px border border-white/15 bg-white/15 sm:grid-cols-2">
+              <ul className="grid gap-px border border-line-strong bg-line-strong sm:grid-cols-2">
                 {mainTowns.map((town) => (
-                  <li key={town.slug} className="bg-ink px-6 py-7">
-                    <h3 className="font-display text-xl text-paper">{town.name}</h3>
-                    <p className="mt-2 text-[0.95rem] leading-relaxed text-paper/75">
-                      {town.blurb}
-                    </p>
+                  <li key={town.slug} className="bg-paper px-6 py-6">
+                    <h3 className="font-display text-xl">{town.name}</h3>
+                    <p className="mt-2 text-[0.95rem] leading-relaxed text-slate-mid">{town.blurb}</p>
                   </li>
                 ))}
               </ul>
-              <p className="mt-6 text-[0.95rem] leading-relaxed text-paper/75">
+              <p className="mt-5 text-[0.95rem] leading-relaxed text-slate-mid">
                 Also covering: {surroundingAreas.join(", ")}.
               </p>
-              <div className="mt-7">
-                <ButtonLink href="/areas" variant="outline-light">
+              <div className="mt-6">
+                <ButtonLink href="/areas" variant="outline">
                   All areas covered
                 </ButtonLink>
               </div>
@@ -293,44 +321,43 @@ export default function HomePage() {
       </Section>
 
       {/* ------------------------- emergencies ------------------------ */}
-      <Section tone="paper">
+      <Section tone="dark" id="emergency">
         <Container>
-          <div className="grid items-center gap-10 border border-line-strong bg-canvas px-7 py-10 sm:px-10 lg:grid-cols-[1fr_auto]">
-            <div className="flex gap-5">
-              <IconStorm className="h-10 w-10 shrink-0 text-copper" />
-              <div>
-                <h2 className="font-display text-2xl leading-tight sm:text-3xl">
-                  Storm damage? We make roofs safe first
-                </h2>
-                <p className="mt-3 max-w-2xl leading-relaxed text-slate-mid">
-                  If water is getting in, call{" "}
-                  <a href={site.phoneHref} className="link-underline font-semibold text-ink">
-                    {site.phoneDisplay}
-                  </a>
-                  . We sheet up or temporarily repair the damage, photograph everything for your
-                  insurer, and then price the permanent repair in daylight — never on a wet ladder at
-                  midnight.
-                </p>
-                <ul className="mt-5 grid gap-2 sm:grid-cols-2">
-                  <CheckItem>Make-safe visits across the coverage area</CheckItem>
-                  <CheckItem>Photographic record before any repair</CheckItem>
-                  <CheckItem>Written repair notes for insurance claims</CheckItem>
-                  <CheckItem>Follow-up inspection after temporary work</CheckItem>
-                </ul>
-              </div>
+          <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-16">
+            <div>
+              <p className="ridge-rule" aria-hidden="true" />
+              <p className="kicker kicker-light mt-6">Emergency roof repairs</p>
+              <h2 className="mt-4 font-display text-[2.6rem] leading-[1.05] sm:text-6xl lg:text-[4.25rem]">
+                Water coming in right now?
+              </h2>
+              <p className="mt-5 max-w-2xl text-lg leading-relaxed text-copper-mist">
+                Call us and we will make the roof safe first — sheeting or a temporary repair — then
+                price the permanent repair in daylight. Everything is photographed for your insurer
+                before anything is touched.
+              </p>
+              <ul className="mt-7 grid gap-x-8 gap-y-2 text-[0.98rem] text-paper/85 sm:grid-cols-2">
+                <li>Make-safe visits across the patch</li>
+                <li>Photographic record for insurance</li>
+                <li>Written repair notes</li>
+                <li>Follow-up check after temporary work</li>
+              </ul>
             </div>
             <div className="flex flex-col gap-3">
-              <ButtonLink href={site.phoneHref} className="min-h-14 text-lg">
-                <IconPhone className="h-5 w-5" />
-                Call {site.phoneDisplay}
+              <ButtonLink href={site.phoneHref} className="min-h-16 px-10 text-2xl">
+                <IconPhone className="h-6 w-6" />
+                {site.phoneDisplay}
               </ButtonLink>
-              <ButtonLink href="/services/storm-emergency-roof-repairs" variant="outline">
-                Emergency repairs in detail
+              <ButtonLink href="/services/storm-emergency-roof-repairs" variant="outline-light">
+                Storm repairs in detail
               </ButtonLink>
+              <p className="text-[0.9rem] text-paper/70">
+                Weekdays and Saturday mornings, with storms handled outside those hours.
+              </p>
             </div>
           </div>
         </Container>
       </Section>
+      <TileCourse />
 
       {/* ---------------------------- FAQs ---------------------------- */}
       <Section>
@@ -338,9 +365,9 @@ export default function HomePage() {
           <SectionHeading
             kicker="Roofing FAQs"
             title="Straight answers to common questions"
-            lede="Prices, timings, guarantees and what happens when we open a roof and find more than expected."
+            lede="Prices, timings, guarantees — and what happens when we open a roof and find more than expected."
           />
-          <div className="mt-10">
+          <div className="mt-9">
             <FaqList faqs={homeFaqs} />
           </div>
         </Container>
@@ -349,7 +376,7 @@ export default function HomePage() {
       {/* --------------------------- quote ---------------------------- */}
       <Section tone="paper" id="quote">
         <Container>
-          <div className="grid gap-12 lg:grid-cols-[1.35fr_0.65fr]">
+          <div className="grid gap-10 lg:grid-cols-[1.35fr_0.65fr] lg:gap-14">
             <QuoteForm />
             <aside className="space-y-8">
               <div>
@@ -410,7 +437,7 @@ export default function HomePage() {
 
       <CtaBand
         title="Not sure what your roof needs?"
-        body="That is what the free inspection is for. We will look, photograph what we find and tell you honestly whether it needs a repair or a replacement."
+        body="That is what the free inspection is for. We look, photograph what we find, and tell you honestly whether it needs a repair or a replacement."
       />
     </>
   );

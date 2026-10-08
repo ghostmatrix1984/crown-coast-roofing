@@ -1,12 +1,14 @@
 /**
  * Photography credits for demo imagery.
  *
- * Every image on this site comes from Wikimedia Commons and is used
- * unmodified apart from web resizing (service-flat-roof.jpg is additionally
- * cropped from the bottom to trim a ladder and an embossed manufacturer mark
- * out of frame). Attribution is rendered in the site footer and recorded in
- * public/images/CREDITS.md. Replace these with the customer's own owned or
- * licensed photography before any commercial launch.
+ * Every image on this site comes from Wikimedia Commons. Images are resized
+ * for the web; several are also cropped to frame the subject and to remove
+ * third-party signage from view (hero-roofing-work.jpg,
+ * project-reroof-after.jpg, project-chimney-before.jpg,
+ * project-tiles-after.jpg) and service-flat-roof.jpg is trimmed to remove a
+ * ladder and an embossed manufacturer mark. Attribution is rendered in the
+ * site footer and recorded in public/images/CREDITS.md. Replace these with the
+ * customer's own owned or licensed photography before any commercial launch.
  */
 export type ImageCredit = {
   file: string;
@@ -18,13 +20,13 @@ export type ImageCredit = {
 };
 export const imageCredits: ImageCredit[] = [
   {
-    file: "hero-roofscape.jpg",
-    title: "Beachfront chimneys Viking Bay Broadstairs Kent England",
-    author: "Acabashi",
-    license: "CC BY-SA 4.0",
-    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
+    file: "hero-roofing-work.jpg",
+    title: "Repairing the roof (geograph.org.uk 3714275)",
+    author: "Bob Harvey",
+    license: "CC BY-SA 2.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0",
     sourceUrl:
-      "https://commons.wikimedia.org/wiki/File:Beachfront_chimneys_Viking_Bay_Broadstairs_Kent_England.jpg",
+      "https://commons.wikimedia.org/wiki/File:Repairing_the_roof_-_geograph.org.uk_-_3714275.jpg",
   },
   {
     file: "service-repairs.jpg",
@@ -115,12 +117,11 @@ export const imageCredits: ImageCredit[] = [
   },
   {
     file: "project-reroof-after.jpg",
-    title: "Roofs being repaired, Sycamore Avenue, Leymoor (geograph.org.uk 7103457)",
-    author: "habiloid",
-    license: "CC BY-SA 2.0",
-    licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0",
-    sourceUrl:
-      "https://commons.wikimedia.org/wiki/File:Roofs_being_repaired,_Sycamore_Avenue,_Leymoor_-_geograph.org.uk_-_7103457.jpg",
+    title: "Barn conversion rooflights",
+    author: "JagMan77",
+    license: "CC BY-SA 4.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Barn_conversion_rooflights.jpg",
   },
   {
     file: "project-tiles-before.jpg",
