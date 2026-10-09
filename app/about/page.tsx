@@ -58,7 +58,7 @@ export default function AboutPage() {
             <div className="relative aspect-[4/3] w-full border border-line">
               <Image
                 src="/images/about-kent-homes.jpg"
-                alt="Kentish brick cottages with slate roofs and chimney stacks — the kind of local housing stock Crown & Coast works on"
+                alt="A Kentish barn roof with brick chimney stacks and plain tiles — the kind of local roof Crown & Coast works on"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
                 className="object-cover"

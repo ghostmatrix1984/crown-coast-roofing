@@ -31,7 +31,7 @@ export const services: Service[] = [
       "Leaks traced to their cause, slipped tiles and failed flashings fixed — with photographs of what we found.",
     icon: "repair",
     image: "/images/service-repairs.jpg",
-    imageAlt: "Roof stripped back for repair on a stone cottage, with new timbers and underlay exposed",
+    imageAlt: "A roofer bedding ridge tiles on a newly tiled roof",
     intro: [
       "Most roof leaks are not where the stain appears. Water travels along rafters, battens and ceilings before it shows itself indoors, which is why we trace a leak from the inside out and the top down before lifting a single tile.",
       "Once we have found the cause, most repairs are straightforward: replacing broken or slipped tiles and slates, re-bedding ridges, renewing lead flashings, resealing verges, or clearing and re-aligning gutters that have been pushing water back into the eaves. You get photographs of the fault, the repair and the finished work.",
@@ -117,7 +117,7 @@ export const services: Service[] = [
       "Kentish peg tiles, plain tiles and natural slate — laid, matched and fixed for the pitch and exposure.",
     icon: "slate",
     image: "/images/service-slate.jpg",
-    imageAlt: "Detail of a natural slate roof with a slate-hung gable and dressed ridge",
+    imageAlt: "A finished plain-tile roof with clean lines and rooflights after re-tiling",
     intro: [
       "East Kent is full of pitched roofs that need a sympathetic hand: peg tile and plain tile roofs on cottages and terraces, natural slate on Victorian and Edwardian homes, and modern interlocking tiles on later estates. Each behaves differently in wind and rain, and each is detailed differently at the ridges, verges and valleys.",
       "Whether we are repairing a handful of storm-lost tiles or re-covering a whole slope, matching matters. We source tiles and slates that sit properly with what is already on the roof, including reclaimed stock for older properties, and we fix to the exposure of the site rather than to a generic rule of thumb.",
@@ -338,11 +338,11 @@ export type Project = {
 };
 
 /**
- * Demonstration case studies. These are illustrative pairings using licensed
- * stock photography, not genuine Crown & Coast projects. The two photographs
- * in each pair are labelled factually (what each picture actually shows) and
- * every pair carries an honest note, because they may show different
- * properties — see lib/image-credits.ts for sources.
+ * Demonstration case studies. These are illustrative EXAMPLE photographs using
+ * licensed stock photography, not genuine Crown & Coast projects. Each case
+ * study shows two different properties, labelled factually for what each
+ * picture actually shows — never presented as a before-and-after of one
+ * project. See lib/image-credits.ts for sources.
  */
 export const projects: Project[] = [
   {
@@ -361,12 +361,12 @@ export const projects: Project[] = [
     beforeImage: "/images/project-reroof-during.jpg",
     beforeAlt:
       "Roofers stripping and re-tiling the slope of an interwar semi, with scaffold in place",
-    beforeLabel: "Stripping & re-tiling",
+    beforeLabel: "Re-tiling in progress",
     afterImage: "/images/project-reroof-after.jpg",
-    afterAlt: "A finished plain-tile roof with clean lines and rooflights after re-tiling",
-    afterLabel: "Tiling completed",
+    afterAlt: "Tile bundles hung on the battens as new tiles are fixed on an insulated roof",
+    afterLabel: "Fixing the new tiles",
     pairNote:
-      "Demonstration pairing showing a re-roof mid-work and completed tiling. Illustrative imagery, not a documented Crown & Coast project.",
+      "Two example photographs of this kind of work, labelled for what each shows. They picture different properties — not a before-and-after record of one project.",
   },
   {
     slug: "failed-pantiles-replaced",
@@ -383,12 +383,12 @@ export const projects: Project[] = [
     ],
     beforeImage: "/images/project-tiles-before.jpg",
     beforeAlt: "Broken and delaminating pantiles stripped off the roof, ready for the skip",
-    beforeLabel: "Failed tiles out",
+    beforeLabel: "Failed tiles removed",
     afterImage: "/images/project-tiles-after.jpg",
-    afterAlt: "New pantiles laid over fresh underlay on a re-laid section of roof",
-    afterLabel: "New tiles laid",
+    afterAlt: "New clay pantiles stacked in crates, ready to be laid",
+    afterLabel: "New pantiles ready",
     pairNote:
-      "Illustrative pairing showing the stages of this kind of work — the two photographs may show different properties.",
+      "Two example photographs of this kind of work, labelled for what each shows. They picture different properties — not a before-and-after record of one project.",
   },
   {
     slug: "chimney-leadwork-renewal",
@@ -405,12 +405,12 @@ export const projects: Project[] = [
     ],
     beforeImage: "/images/project-chimney-before.jpg",
     beforeAlt: "Contractor working from a cherry picker at a weathered brick chimney stack",
-    beforeLabel: "Stack before work",
+    beforeLabel: "Chimney work in progress",
     afterImage: "/images/project-chimney-after.jpg",
     afterAlt: "Chimney stack with new stepped lead flashings dressed at the roof junction",
-    afterLabel: "New lead flashings",
+    afterLabel: "Finished lead flashings",
     pairNote:
-      "Illustrative pairing showing chimney work in progress and finished leadwork — the two photographs may show different properties.",
+      "Two example photographs of this kind of work, labelled for what each shows. They picture different properties — not a before-and-after record of one project.",
   },
 ];
 

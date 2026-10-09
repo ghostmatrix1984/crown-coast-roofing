@@ -2,13 +2,13 @@
  * Photography credits for demo imagery.
  *
  * Every image on this site comes from Wikimedia Commons. Images are resized
- * for the web; several are also cropped to frame the subject and to remove
- * third-party signage from view (hero-roofing-work.jpg,
- * project-reroof-after.jpg, project-chimney-before.jpg,
- * project-tiles-after.jpg) and service-flat-roof.jpg is trimmed to remove a
- * ladder and an embossed manufacturer mark. Attribution is rendered in the
- * site footer and recorded in public/images/CREDITS.md. Replace these with the
- * customer's own owned or licensed photography before any commercial launch.
+ * for the web; hero-kent-roofs.jpg is cropped at the left edge to remove a
+ * signboard, project-chimney-before.jpg is cropped to the chimney work,
+ * project-tiles-after.jpg and others are used as framed, and
+ * service-flat-roof.jpg is trimmed to remove a ladder and an embossed
+ * manufacturer mark. Attribution is rendered in the site footer and recorded
+ * in public/images/CREDITS.md. Replace these with the customer's own owned or
+ * licensed photography before any commercial launch.
  */
 export type ImageCredit = {
   file: string;
@@ -18,24 +18,24 @@ export type ImageCredit = {
   licenseUrl: string;
   sourceUrl: string;
 };
+
 export const imageCredits: ImageCredit[] = [
   {
-    file: "hero-roofing-work.jpg",
-    title: "Repairing the roof (geograph.org.uk 3714275)",
-    author: "Bob Harvey",
-    license: "CC BY-SA 2.0",
-    licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0",
+    file: "hero-kent-roofs.jpg",
+    title: "Brick cottages Goodnestone Dover Kent England 1",
+    author: "Acabashi",
+    license: "CC BY-SA 4.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
     sourceUrl:
-      "https://commons.wikimedia.org/wiki/File:Repairing_the_roof_-_geograph.org.uk_-_3714275.jpg",
+      "https://commons.wikimedia.org/wiki/File:Brick_cottages_Goodnestone_Dover_Kent_England_1.jpg",
   },
   {
     file: "service-repairs.jpg",
-    title: "Repairing the roof (geograph.org.uk 7264411)",
-    author: "Bob Harvey",
-    license: "CC BY-SA 2.0",
-    licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0",
-    sourceUrl:
-      "https://commons.wikimedia.org/wiki/File:Repairing_the_roof_-_geograph.org.uk_-_7264411.jpg",
+    title: "Roofing 002",
+    author: "Jeuwre",
+    license: "CC0",
+    licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0/",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Roofing_002.jpg",
   },
   {
     file: "service-new-roof.jpg",
@@ -47,12 +47,11 @@ export const imageCredits: ImageCredit[] = [
   },
   {
     file: "service-slate.jpg",
-    title: "Welsh slate roof on the Causeway School (geograph.org.uk 3699213)",
-    author: "Bob Embleton",
-    license: "CC BY-SA 2.0",
-    licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0",
-    sourceUrl:
-      "https://commons.wikimedia.org/wiki/File:Welsh_slate_roof_on_the_Causeway_School_-_geograph.org.uk_-_3699213.jpg",
+    title: "Barn conversion rooflights",
+    author: "JagMan77",
+    license: "CC BY-SA 4.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Barn_conversion_rooflights.jpg",
   },
   {
     file: "service-flat-roof.jpg",
@@ -90,12 +89,12 @@ export const imageCredits: ImageCredit[] = [
   },
   {
     file: "about-kent-homes.jpg",
-    title: "Brick cottages Goodnestone Dover Kent England 1",
+    title: "Barn roof and chimneys at at Monkton Kent England",
     author: "Acabashi",
     license: "CC BY-SA 4.0",
     licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
     sourceUrl:
-      "https://commons.wikimedia.org/wiki/File:Brick_cottages_Goodnestone_Dover_Kent_England_1.jpg",
+      "https://commons.wikimedia.org/wiki/File:Barn_roof_and_chimneys_at_at_Monkton_Kent_England.jpg",
   },
   {
     file: "areas-kent-roofs.jpg",
@@ -117,11 +116,11 @@ export const imageCredits: ImageCredit[] = [
   },
   {
     file: "project-reroof-after.jpg",
-    title: "Barn conversion rooflights",
-    author: "JagMan77",
-    license: "CC BY-SA 4.0",
-    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:Barn_conversion_rooflights.jpg",
+    title: "Roofing 001",
+    author: "Jeuwre",
+    license: "CC0",
+    licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0/",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Roofing_001.jpg",
   },
   {
     file: "project-tiles-before.jpg",
@@ -133,12 +132,11 @@ export const imageCredits: ImageCredit[] = [
   },
   {
     file: "project-tiles-after.jpg",
-    title: "New roof tiles at the White Horse, Beverley (geograph.org.uk 4394715)",
-    author: "Ian S",
-    license: "CC BY-SA 2.0",
-    licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0",
-    sourceUrl:
-      "https://commons.wikimedia.org/wiki/File:New_roof_tiles_at_the_White_Horse,_Beverley_-_geograph.org.uk_-_4394715.jpg",
+    title: "Roof tiles packed in crate 1",
+    author: "W.carter",
+    license: "CC0",
+    licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0/",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Roof_tiles_packed_in_crate_1.jpg",
   },
   {
     file: "project-chimney-before.jpg",

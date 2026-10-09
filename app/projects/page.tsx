@@ -10,9 +10,9 @@ import { ButtonLink, CheckItem, Container, DemoNote, Section } from "@/component
 import { IconPhone } from "@/components/icons";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Roofing projects — before and after",
+  title: "Roofing projects — examples of our work",
   description:
-    "Before-and-after examples of roofing work across Folkestone, Hythe, Dover and Deal: storm damage repairs, chimney leadwork renewal and flat roof replacements. Demonstration content for a fictional company.",
+    "Examples of roofing work across Folkestone, Hythe, Dover and Deal: re-tiling, tile replacement and chimney leadwork. Clearly labelled demonstration imagery for a fictional company.",
   path: "/projects",
 });
 
@@ -30,18 +30,18 @@ export default function ProjectsPage() {
         <Container>
           <p className="kicker">Projects</p>
           <h1 className="mt-5 max-w-4xl font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl lg:text-[3.75rem]">
-            The kind of work we do, before and after
+            The kind of work we do
           </h1>
           <p className="lede mt-6 max-w-3xl">
             Every job gets photographed as it happens — the fault, the work and the finished detail.
-            Here is what that looks like across three typical East Kent jobs, with two photographs on
-            each: where the work started, and where it finished.
+            Here are three typical jobs, each shown with two example photographs labelled for what
+            they show.
           </p>
           <div className="mt-6 max-w-3xl">
             <DemoNote>
-              These case studies are fictional demonstration content, illustrated with licensed stock
-              photography. They do not show real Crown &amp; Coast Roofing projects or real customers,
-              and the paired images may show different properties.
+              These case studies are fictional demonstration content illustrated with licensed stock
+              photography. They do not show real Crown &amp; Coast Roofing projects or real customers —
+              and each pair shows two different properties, not a before-and-after of one project.
             </DemoNote>
           </div>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">

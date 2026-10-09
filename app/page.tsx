@@ -115,11 +115,11 @@ export default function HomePage() {
           </div>
           <div className="relative min-h-[300px] lg:min-h-[620px]">
             <Image
-              src="/images/hero-roofing-work.jpg"
-              alt="A roof half-stripped back to the battens beneath scaffolding during a re-roof"
+              src="/images/hero-kent-roofs.jpg"
+              alt="Kentish brick cottages with slate roofs, tall chimneys and a cottage garden"
               fill
               priority
-              sizes="(max-width: 1024px) 100vw, 45vw"
+              sizes="(max-width: 1024px) 100vw, 60vw"
               className="object-cover"
             />
           </div>
@@ -186,9 +186,9 @@ export default function HomePage() {
       <Section tone="paper" id="projects">
         <Container>
           <SectionHeading
-            kicker="Recent work"
-            title="Before and after, from around the district"
-            lede="Two photographs on every job — where the work started, and where it finished."
+            kicker="Our work"
+            title="Examples of roofing work from around the district"
+            lede="Two example photographs for each kind of job, labelled for what each one shows."
           />
           <div className="mt-9 space-y-14">
             {featured.map((project) => (
@@ -210,8 +210,9 @@ export default function HomePage() {
           </div>
           <div className="mt-8">
             <DemoNote>
-              Illustrative demonstration pairings using licensed stock photography — not genuine
-              Crown &amp; Coast projects, and the paired images may show different properties.
+              Illustrative example photographs using licensed stock photography — not genuine
+              Crown &amp; Coast projects. Each pair shows two different properties: examples of the
+              work, not a before-and-after record of one project.
             </DemoNote>
           </div>
           <div className="mt-6">
